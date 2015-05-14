@@ -1,0 +1,28 @@
+body {
+	height: 5000px;
+	padding: 50px;
+	font: 14px 'Hanna', serif;
+	background-color: #9BECC9;
+	/*line-height: 1.5em;*/
+}
+
+a {
+	color: #00B7FF;
+}
+
+.timeLine{
+	/*width: 500px;*/
+}
+
+.myNavBar{
+	margin-bottom: 20px;
+}
+
+.myCollection{
+	 position:fixed;
+	 left:0px;
+	 bottom:0px;
+	 height:300px;
+	 width:100%;
+	 background:#82F0D6;
+}
