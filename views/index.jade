@@ -1,20 +1,148 @@
 extends layout
 
 block content
-  .myNavBar
-    .tittle
-      h1 주제
-        h3 설명
-    
-    .row
-      .col-md-4#tweetd
-      
-      .col-md-4#hashTag
-      
-      .col-md-4#favorites
-    
-  .myCollection
-    .panel.panel-default
-      .panel-heading 위로 가기 
-      .panel-body Panel content
-        button#addButton 추가하기
+	nav.pink.darken-1
+		.nav-wrapper
+			a.brand-logo(href='#')
+				p GWSLTH.com
+			ul#nav-mobile.right.hide-on-med-and-down
+				li
+					a(href='#') Home
+				li
+					a(href='/book') MyBook
+				li
+					a(href='#') MakeList
+				li
+					a(href='javascript.html') Login
+	.myNavBar
+	.descriptionDiv
+		.deep-purple.darken-2
+			.container
+				.row.white-text
+					.col.s4
+						.section
+							h5 나는페미니스트입니다.
+							p 트위터상에서 ‘나는페미니스트입니다’라는 문장 앞에 샤프(#) 기호를 달고 스스로를 페미니스트로 선언하는 해시태그 운동이 시작된 건 지난 2월10일이었다. 프랑스 풍자 주간지 <샤를리 에브도> 테러 사건이 벌어진 뒤 트위터상에서 이슬람 문화권의 여성 억압을 둘러싼 날선 싸움이 있은 뒤였다. 팝 칼럼니스트 김태훈씨가 한 패션지에 쓴 ‘IS보다 무뇌아적 페미니즘이 더 위험해요’라는 칼럼도 선언의 계기가 됐다.
+					.col.s4
+						.section
+							h5 test
+					.col.s4
+						.section
+							h5 test
+		.divider
+	.container
+		.row
+			.col.s9
+				.row
+					.col.s4
+						.input-field
+							i.mdi-action-account-circle.prefix
+							input#id_search.validate(type='text')
+							label(for='id_search') 아이디로 검색
+						#tweetd
+					
+					.col.s4
+						.input-field
+							i.mdi-action-search.prefix
+							input#keyword_search.validate(type='text')
+							label(for='keyword_search') 키워드로 검색
+						#hashTag
+					
+					.col.s4
+						.input-field
+							i.mdi-action-label.prefix
+							input#hashtag_search.validate(type='text')
+							label(for='hashtag_search') 해쉬태그로 검색
+						#favorites
+			.col.s3
+				.card.deep-purple.darken-2
+					.card-content.white-text
+						span.card-title @xxvet
+						p 내 프로필, 사진 
+					.card-action
+						a(href="#") 주제 바꾸기
+						a(href="#") retweet
+				//- where should I put mixin?..
+				mixin timeline(date, time, user_id, content)
+					li
+						time.cbp_tmtime(datetime='#{date} #{time}')
+							span #{date}
+							span #{time}
+						.cbp_tmicon.cbp_tmicon-phone
+						.cbp_tmlabel
+							p #{user_id}
+							p #{content}
+
+				ul.cbp_tmtimeline
+					mixin timeline(123,123,'123','123')
+					li
+						time.cbp_tmtime(datetime='2013-04-10 18:30')
+							span 4/10/13
+							span 18:30
+						.cbp_tmicon.cbp_tmicon-phone
+						.cbp_tmlabel
+							p Ricebean black-eyed pea
+							p Winter purslane...
+					li
+						time.cbp_tmtime(datetime='2013-04-11T12:04')
+							span 4/11/13
+							span 12:04
+						.cbp_tmicon.cbp_tmicon-screen
+						.cbp_tmlabel
+							p Greens radish arugula
+							p Caulie dandelion maize...
+					li
+						time.cbp_tmtime(datetime='2013-04-13 05:36')
+							span 4/13/13
+							span 05:36
+						.cbp_tmicon.cbp_tmicon-mail
+						.cbp_tmlabel
+							p Sprout garlic kohlrabi
+							p Parsnip lotus root...
+					li
+						time.cbp_tmtime(datetime='2013-04-15 13:15')
+							span 4/15/13
+							span 13:15
+						.cbp_tmicon.cbp_tmicon-phone
+						.cbp_tmlabel
+							p Watercress ricebean
+							p Peanut gourd nori...
+					li
+						time.cbp_tmtime(datetime='2013-04-16 21:30')
+							span 4/16/13
+							span 21:30
+						.cbp_tmicon.cbp_tmicon-earth
+						.cbp_tmlabel
+							p Courgette daikon
+							p Parsley amaranth tigernut...
+				.preloader-wrapper.big.active#loading
+					.spinner-layer.spinner-red-only
+						.circle-clipper.left
+							.circle
+						.gap-patch
+							.circle
+						.circle-clipper.right
+							.circle
+
+
+	footer.page-footer.pink.darken-1
+		.container
+			.row
+				.col.l6.s12
+					h5.white-text Footer Content
+					p.grey-text.text-lighten-4 You can use rows and columns here to organize your footer content.
+				.col.l4.offset-l2.s12
+					h5.white-text Links
+					ul
+						li
+							a.grey-text.text-lighten-3(href='#!') Link 1
+						li
+							a.grey-text.text-lighten-3(href='#!') Link 2
+						li
+							a.grey-text.text-lighten-3(href='#!') Link 3
+						li
+							a.grey-text.text-lighten-3(href='#!') Link 4
+		.footer-copyright
+			.container
+				| © 2014 Copyright Text
+				a.grey-text.text-lighten-4.right(href='#!') More Links

@@ -1,9 +1,5 @@
 body {
-	height: 5000px;
-	padding: 50px;
-	font: 14px 'Hanna', serif;
-	background-color: #9BECC9;
-	/*line-height: 1.5em;*/
+	background-color: white;
 }
 
 a {
@@ -14,10 +10,6 @@ a {
 	/*width: 500px;*/
 }
 
-.myNavBar{
-	margin-bottom: 20px;
-}
-
 .myCollection{
 	 position:fixed;
 	 left:0px;
@@ -25,4 +17,34 @@ a {
 	 height:300px;
 	 width:100%;
 	 background:#82F0D6;
+}
+
+.tweet{
+	font: 14px 'Nanum Gothic', sans-serif;
+}
+
+.tweet:hover{
+	background: #FFFFFF;
+	/*font: 20px 'Nanum Gothic', sans-serif;*/
+}
+
+
+.input-field input[type=text]:focus + label {
+	color: #512da8 ;
+}
+
+.input-field input[type=text]:focus {
+	border-bottom: 1px solid #512da8;
+	box-shadow: 0 1px 0 0 #512da8;
+}
+
+.input-field .prefix.active {
+	color: #512da8;
+}
+
+#loading{
+	position: absolute;
+	top: 50%;
+	left: 40%;
+	display: none;
 }

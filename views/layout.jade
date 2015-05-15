@@ -2,29 +2,63 @@ doctype html
 html
 	head
 		title babo
-		script(src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js")
 		link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css')
 		link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css')
+		link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.96.1/css/materialize.min.css")
 		link(rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/earlyaccess/nanumgothic.css")
 		link(rel='stylesheet', href='/stylesheets/style.css')
-		script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js')
+		link(rel='stylesheet', href='/stylesheets/timeline.css')
+		script(src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js")
+		//- script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js')
+		script(src='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.96.1/js/materialize.min.js')
 		script(src='https://cdn.socket.io/socket.io-1.3.2.js')
 		script.
 			$(document).ready(function(){
 				var socket = io.connect('http://localhost:4000');
-				socket.on('stream', function(tweet){
-				$('#tweetd').prepend('<p class="tweet">'+tweet+'</p><br>');
+				socket.on('id_search', function(tweet){
+				$('#tweetd').prepend('<p class="tweet card-panel grey lighten-5">'+tweet+'</p><br>');
 				});
-				socket.on('hashTag', function(tweet){
-					$('#hashTag').prepend('<p class="tweet">'+tweet+'</p><br>');
+				socket.on('keyword_search', function(tweet){
+					$('#hashTag').prepend('<p class="tweet card-panel grey lighten-5">'+tweet+'</p><br>');
 				});
-				socket.on('favorites', function(tweet){
-					$('#favorites').prepend('<p class="tweet">'+tweet+'</p><br>');
+				socket.on('hashtag_search', function(tweet){
+					$('#favorites').prepend('<p class="tweet card-panel grey lighten-5">'+tweet+'</p><br>');
 				});
 
-				$('.row').on("click", '.tweet', function() {
-					alert("test");
+				$('.container').on("mouseenter", '.card-panel', function() {
+					$(this).removeClass( "grey" );
+					$(this).addClass( "pink" );
 				});
+				$('.container').on("mouseleave", '.card-panel', function() {
+					$(this).removeClass( "pink" );
+					$(this).addClass( "grey" );
+				});
+
+				$('input').keypress(function(e) {
+					if(e.which == 13) {
+						var value = $(this).val();
+						var search_type = $(this).attr( "id" );
+						$('input').val('');
+						socket.emit("search" , [value, search_type]);
+						$("#loading").css("display", "block");
+						setTimeout(function(){
+							$("#loading").css("display", "none");
+							}, 3000);
+					}
+				});
+
+				$(".container").on("click", '.tweet.card-panel', function(){
+					Materialize.toast('트윗을 추가했습니다.', 3000, 'pink');
+					var currentdate = new Date(); 
+					var date = currentdate.getMonth()+'/'+currentdate.getDate();
+					var time = currentdate.getHours()+':'+ currentdate.getMinutes();
+					var user_id = '';
+					var content = $(this).html();
+					var new_timeline_content = '<li><time datetime='+date+' '+time+' class="cbp_tmtime"><span>'+date+'</span><span>'+time+'</span></time>';
+					new_timeline_content+= '<div class="cbp_tmicon cbp_tmicon-phone"></div><div class="cbp_tmlabel"><p>'+user_id+'</p><p class="">'+content+'</p></div></li>';
+					$('.cbp_tmtimeline').prepend(new_timeline_content);
+				});
+
 			});
 
 	body
