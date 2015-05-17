@@ -1,19 +1,6 @@
 extends layout
 
 block content
-	nav.pink.darken-1
-		.nav-wrapper
-			a.brand-logo(href='#')
-				p GWSLTH.com
-			ul#nav-mobile.right.hide-on-med-and-down
-				li
-					a(href='#') Home
-				li
-					a(href='/book') MyBook
-				li
-					a(href='#') MakeList
-				li
-					a(href='javascript.html') Login
 	.myNavBar
 	.descriptionDiv
 		.deep-purple.darken-2
@@ -43,21 +30,20 @@ block content
 					
 					.col.s4
 						.input-field
+							i.mdi-action-trending-neutral.prefix
+							input#keyword_search.validate(disabled='' type='text')
+							label(for='keyword_search') 유저 관심글
+						#favorites
+					.col.s4
+						.input-field
 							i.mdi-action-search.prefix
 							input#keyword_search.validate(type='text')
 							label(for='keyword_search') 키워드로 검색
 						#hashTag
-					
-					.col.s4
-						.input-field
-							i.mdi-action-label.prefix
-							input#hashtag_search.validate(type='text')
-							label(for='hashtag_search') 해쉬태그로 검색
-						#favorites
 			.col.s3
 				.card.deep-purple.darken-2
 					.card-content.white-text
-						span.card-title @xxvet
+						span.card-title @FeFeFe2015
 						p 내 프로필, 사진 
 					.card-action
 						a(href="#") 주제 바꾸기

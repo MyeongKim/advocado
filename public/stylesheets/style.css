@@ -6,10 +6,6 @@ a {
 	color: #00B7FF;
 }
 
-.timeLine{
-	/*width: 500px;*/
-}
-
 .myCollection{
 	 position:fixed;
 	 left:0px;
@@ -47,4 +43,26 @@ a {
 	top: 50%;
 	left: 40%;
 	display: none;
+}
+
+.mycontainer{
+	margin: 10px auto;
+	width: 80%;
+}
+
+.book:hover{
+	background-color: #F9D6EB;
+}
+
+.bookContent{
+	background-color: #EBEBEB;
+}
+
+.page-content-inside h2{
+	padding: 40px;
+}
+
+.page-content-inside  p{
+	padding: 100px;
+	background-color: #FFFFFF;
 }

@@ -21,7 +21,7 @@ html
 				socket.on('keyword_search', function(tweet){
 					$('#hashTag').prepend('<p class="tweet card-panel grey lighten-5">'+tweet+'</p><br>');
 				});
-				socket.on('hashtag_search', function(tweet){
+				socket.on('favorites', function(tweet){
 					$('#favorites').prepend('<p class="tweet card-panel grey lighten-5">'+tweet+'</p><br>');
 				});
 
@@ -62,4 +62,17 @@ html
 			});
 
 	body
+		nav.pink.darken-1
+			.nav-wrapper
+				a.brand-logo(href='/')
+					p GWSLTH.com
+				ul#nav-mobile.right.hide-on-med-and-down
+					li
+						a(href='/') Home
+					li
+						a(href='/book') MyBook
+					li
+						a(href='/list') MakeList
+					li
+						a(href='/login') Login
 		block content

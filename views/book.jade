@@ -1,4 +1,28 @@
 extends layout
 
+
 block content
-	
+	mixin makebook(title, content, user_id, link)
+		.col.s3
+			.row.book
+				.col.s12.m12
+					.card
+						.card-image
+							img(src='http://materializecss.com/images/sample-1.jpg')
+							span.card-title
+								a(href='/book/#{title}') #{title}
+						.card-content
+							p #{content}
+						.card-action
+								a(href='#') #{user_id}
+								a(href='#') #{link}
+	.mycontainer
+		.row
+			mixin makebook('title1', 'body1', 1, 1)
+			mixin makebook('title2', 'body2', 1, 1)
+			mixin makebook('title3', 'body3', 1, 1)
+			mixin makebook('title4', 'body4', 1, 1)
+			mixin makebook('title5', 'body5', 1, 1)
+			mixin makebook('title6', 'body6', 1, 1)
+			mixin makebook('title7', 'body7', 1, 1)
+			mixin makebook('title8', 'body8', 1, 1)
